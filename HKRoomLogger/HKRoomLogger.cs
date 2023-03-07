@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Modding;
 using Newtonsoft.Json;
@@ -7,9 +9,10 @@ using UnityEngine.SceneManagement;
 
 namespace HKRoomLogger
 {
-    public class HKRoomLoggerMod : Mod
+    public class HKRoomLoggerMod : Mod, IMenuMod
     {
         public static string LogPath => Path.Combine(Application.persistentDataPath, "RoomLogger.json");
+        public static string programPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "../Local/Programs/hkat/hkat.exe");
 
         public struct OutData
         {
@@ -67,5 +70,30 @@ namespace HKRoomLogger
             }
         }
 
+        public bool ToggleButtonInsideMenu => false;
+        public List<IMenuMod.MenuEntry> GetMenuData(IMenuMod.MenuEntry? toggleButtonEntry)
+        {
+            return new List<IMenuMod.MenuEntry>
+            {
+                new IMenuMod.MenuEntry
+                {
+                    Name = "Open Tracker",
+                    Description = "Opens companion tracker if it exists. Will take you to the download page if not found on your system.",
+                    Values = new string[] { "" },
+                    Saver = opt => { 
+                        if (File.Exists(programPath))
+                        {
+                            Process.Start(programPath);
+                        } else
+                        {
+                            Process.Start("https://github.com/RanDumSocks/HKAutoTrackerElectron/releases/latest");
+                        }
+                    },
+                    Loader = () => {
+                        return 1;
+                    }
+                }
+            };
+        }
     }
 }
