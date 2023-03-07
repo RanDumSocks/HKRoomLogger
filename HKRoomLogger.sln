@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HKRoomLogger", "HKRoomLogger\HKRoomLogger.csproj", "{7352DF3A-7D17-47DC-83A4-9D5BC3C67D45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{E1353D5A-F0E9-42ED-8AB9-65019F9776B4}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\dependabot.yml = .github\dependabot.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7352DF3A-7D17-47DC-83A4-9D5BC3C67D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7352DF3A-7D17-47DC-83A4-9D5BC3C67D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7352DF3A-7D17-47DC-83A4-9D5BC3C67D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7352DF3A-7D17-47DC-83A4-9D5BC3C67D45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B534C4E-6FA2-4B5A-AF23-45E116B5996E}
+	EndGlobalSection
+EndGlobal

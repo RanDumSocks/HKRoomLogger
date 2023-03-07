@@ -1,1 +1,3 @@
-# HKRoomLogger
+﻿# HKRoomLogger
+
+A Hollow Knight mod that...
