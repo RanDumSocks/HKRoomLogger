@@ -6,6 +6,8 @@ using Modding;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace HKRoomLogger
 {
@@ -43,11 +45,7 @@ namespace HKRoomLogger
 
         public override void Initialize()
         {
-            Log("Initializing");
-
             UnityEngine.SceneManagement.SceneManager.activeSceneChanged += OnSceneChange;
-
-            Log("Initialized");
         }
         public void OnSceneChange(Scene oldScene, Scene newScene)
         {
@@ -73,12 +71,25 @@ namespace HKRoomLogger
         public bool ToggleButtonInsideMenu => false;
         public List<IMenuMod.MenuEntry> GetMenuData(IMenuMod.MenuEntry? toggleButtonEntry)
         {
+            string desc;
+            string title;
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                desc = "Opens companion tracker if it exists. Will take you to the download page if not found on your system.";
+                title = "Open Tracker";
+            } 
+            else 
+            {
+                desc = "The tracker is not avaliable for your OS. However, you can give it a looksie if you want.";
+                title = "Open Tracker Repository";
+            }
+
             return new List<IMenuMod.MenuEntry>
             {
                 new IMenuMod.MenuEntry
                 {
-                    Name = "Open Tracker",
-                    Description = "Opens companion tracker if it exists. Will take you to the download page if not found on your system.",
+                    Name = title,
+                    Description = desc,
                     Values = new string[] { "" },
                     Saver = opt => { 
                         if (File.Exists(programPath))
